@@ -24,14 +24,24 @@ class App extends Component {
     })
   }
 
+  addTodos =(todo)=>{
+
+    let updatedTodos=[...this.state.todos,{
+      id:this.state.todos.length+1,todo:todo
+    }];
+    this.setState({
+      todos:updatedTodos
+    })
+  }
 
   render() {
     let todos = this.state.todos;
     let deleteTodos=this.deleteTodos;
+    let addTodos=this.addTodos;
     return (
 
       <div className="App">
-        <InputBox></InputBox>
+        <InputBox addTodos={addTodos} ></InputBox>
         <TodoList todos={todos}  deleteTodos={deleteTodos}></TodoList>
       </div>
     );
